@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/jfranpineda.github.io/ethsec_billing/static/css/main.f855e6bc.css",
-    "main.js": "/jfranpineda.github.io/ethsec_billing/static/js/main.a0700388.js",
-    "static/js/787.c7e73996.chunk.js": "/jfranpineda.github.io/ethsec_billing/static/js/787.c7e73996.chunk.js",
-    "static/media/logo.svg": "/jfranpineda.github.io/ethsec_billing/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/jfranpineda.github.io/ethsec_billing/index.html",
-    "main.f855e6bc.css.map": "/jfranpineda.github.io/ethsec_billing/static/css/main.f855e6bc.css.map",
-    "main.a0700388.js.map": "/jfranpineda.github.io/ethsec_billing/static/js/main.a0700388.js.map",
-    "787.c7e73996.chunk.js.map": "/jfranpineda.github.io/ethsec_billing/static/js/787.c7e73996.chunk.js.map"
+    "main.css": "/ethsec_billing/static/css/main.f855e6bc.css",
+    "main.js": "/ethsec_billing/static/js/main.f332ec2b.js",
+    "static/js/787.c7e73996.chunk.js": "/ethsec_billing/static/js/787.c7e73996.chunk.js",
+    "static/media/logo.svg": "/ethsec_billing/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/ethsec_billing/index.html",
+    "main.f855e6bc.css.map": "/ethsec_billing/static/css/main.f855e6bc.css.map",
+    "main.f332ec2b.js.map": "/ethsec_billing/static/js/main.f332ec2b.js.map",
+    "787.c7e73996.chunk.js.map": "/ethsec_billing/static/js/787.c7e73996.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f855e6bc.css",
-    "static/js/main.a0700388.js"
+    "static/js/main.f332ec2b.js"
   ]
 }
