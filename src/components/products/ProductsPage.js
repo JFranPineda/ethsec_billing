@@ -19,9 +19,10 @@ const ProductsPage = () => {
 
   return (
     <div>
+      <h1>Test...</h1>
+      <pre id="json">{movies.map(({ title }) => title).join(', ')}</pre>
       <h1>Product Table</h1>
       <ProductsTable products={products} />
-      <pre id="json">{movies.map(({ title }) => title).join(', ')}</pre>
     </div>
   );
 };
