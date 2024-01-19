@@ -3,6 +3,7 @@ import ProductsTable from './ProductsTable.js';
 
 const ProductsPage = () => {
   const [products, setProducts] = useState(null);
+  const [movies, setMovies] = useState([])
 
   useEffect(() => {
     fetch('https://dummyjson.com/products?limit=10&skip=10&select=title,price')
@@ -13,13 +14,14 @@ const ProductsPage = () => {
   useEffect(() => {
     fetch('https://light-pink-angelfish.cyclic.app/movies')
     .then(res => res.json())
-    .then(movies => console.log('movies: ', movies));
+    .then(movies => setMovies(movies))
   }, [])
 
   return (
     <div>
       <h1>Product Table</h1>
       <ProductsTable products={products} />
+      <pre id="json">{movies.map(({ title }) => title).join(', ')}</pre>
     </div>
   );
 };
