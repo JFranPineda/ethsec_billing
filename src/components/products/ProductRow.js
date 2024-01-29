@@ -1,25 +1,26 @@
 import React from 'react';
 
 const ProductRow = ({
-  id, //item,
-  modelo,
-  title,  //descripcion,
-  cantidad,
-  price,  //sinIgvUSD,
-  conIgvUSD,
-  sinIgvSoles,
-  conIgvSoles,
+  item,
+  _id, //item,
+  model,
+  description,
+  quantity,
+  price_non_igv,
+  price_igv,
+  price_pen_non_igv,
+  price_pen_igv
 }) => {
   return (
     <tr>
-      <td>{id}</td>
-      <td>{modelo}</td>
-      <td>{title}</td>
-      <td>{cantidad}</td>
-      <td>{price}</td>
-      <td>{conIgvUSD}</td>
-      <td>{sinIgvSoles}</td>
-      <td>{conIgvSoles}</td>
+      <td>{item}</td>
+      <td>{model}</td>
+      <td>{description}</td>
+      <td>{quantity}</td>
+      <td>{price_non_igv}</td>
+      <td>{price_igv}</td>
+      <td>{price_pen_non_igv}</td>
+      <td>{price_pen_igv}</td>
     </tr>
   );
 };

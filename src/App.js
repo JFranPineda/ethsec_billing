@@ -1,6 +1,6 @@
-import { App as Routes } from './Routes'
 import { Link } from "react-router-dom";
-import './App.css';
+import "./App.css";
+import { App as Routes } from "./Routes.js";
 
 function App() {
   return (
@@ -12,12 +12,12 @@ function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
-            <Link to="/products">Products</Link>
+              <Link to="/products">Products</Link>
             </li>
           </ul>
         </nav>
       </div>
-      <Routes/>
+      <Routes />
     </div>
   );
 }
