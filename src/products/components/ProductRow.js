@@ -1,5 +1,6 @@
 import { TableCell, TableRow } from "@tremor/react";
 import React from "react";
+import { useProductActions } from "../hooks/productsHooks.js";
 
 const ProductRow = ({
   item,
@@ -12,6 +13,7 @@ const ProductRow = ({
   price_pen_non_igv,
   price_pen_igv,
 }) => {
+  const { removeProduct } = useProductActions();
   return (
     <TableRow key={_id} id={_id}>
       <TableCell>{item}</TableCell>
@@ -39,7 +41,7 @@ const ProductRow = ({
             />
           </svg>
         </button>
-        <button type="button">
+        <button onClick={() => removeProduct(_id)} type="button">
           <svg
             aria-label="Remove element"
             xmlns="http://www.w3.org/2000/svg"

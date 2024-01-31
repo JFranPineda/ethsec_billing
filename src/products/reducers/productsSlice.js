@@ -16,7 +16,16 @@ const initialState = {
 const productsSlice = createSlice({
   name: "products",
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    rollbackProduct: (state, action) => {
+      const isProductAlreadyDefined = state.products.some(
+        (product) => product._id === action.payload._id
+      );
+      if (!isProductAlreadyDefined) {
+        state.products.push(action.payload);
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
@@ -36,7 +45,7 @@ const productsSlice = createSlice({
       .addCase(getProductById.fulfilled, (state, action) => {
         const productId = action.payload;
         state.products = state.products.filter(
-          (product) => product.id === productId
+          (product) => product._id === productId
         );
       })
       .addCase(getProductById.rejected, (state, action) => {
@@ -46,10 +55,14 @@ const productsSlice = createSlice({
       .addCase(createProduct.fulfilled, (state, action) => {
         state.products.push(action.payload);
       })
+      .addCase(createProduct.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
       .addCase(updateProduct.fulfilled, (state, action) => {
         const updatedProduct = action.payload;
         const existingProductIndex = state.products.findIndex(
-          (product) => product.id === updatedProduct.id
+          (product) => product._id === updatedProduct._id
         );
         if (existingProductIndex !== -1) {
           state.products[existingProductIndex] = updatedProduct;
@@ -58,10 +71,11 @@ const productsSlice = createSlice({
       .addCase(deleteProduct.fulfilled, (state, action) => {
         const productId = action.payload;
         state.products = state.products.filter(
-          (product) => product.id !== productId
+          (product) => product._id !== productId
         );
       });
   },
 });
 
+export const { rollbackProduct } = productsSlice.actions;
 export default productsSlice.reducer;

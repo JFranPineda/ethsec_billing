@@ -1,14 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { syncProductDeleteWithDatabaseMiddleware } from "../products/hooks/productsMiddleware.js";
 import rootReducer from "../reducers/index.js";
-import {
-  persistanceLocalStorageMiddleware,
-  syncWithDatabaseMiddleware,
-} from "./customMiddleware.js";
+import { persistanceLocalStorageMiddleware } from "./customMiddleware.js";
 
 const middleware = (getDefaultMiddleware) => [
   ...getDefaultMiddleware(),
   persistanceLocalStorageMiddleware,
-  syncWithDatabaseMiddleware,
+  syncProductDeleteWithDatabaseMiddleware,
 ];
 
 const store = configureStore({

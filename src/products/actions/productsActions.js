@@ -1,13 +1,14 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const API_URL = "https://light-pink-angelfish.cyclic.app/";
+// const API_URL = "https://light-pink-angelfish.cyclic.app/";
+const API_URL = "http://localhost:3000/";
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async () => {
     try {
-      const response = await axios.get(API_URL + "/products");
+      const response = await axios.get(API_URL + "products");
       return response.data;
     } catch (error) {
       throw error;
