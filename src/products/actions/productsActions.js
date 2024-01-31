@@ -1,8 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// const API_URL = "https://light-pink-angelfish.cyclic.app/";
-const API_URL = "http://localhost:3000/";
+const API_URL = "https://light-pink-angelfish.cyclic.app/";
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
