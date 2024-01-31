@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
-import locationReducer from "./location.js";
+import productsReducer from "../products/reducers/productsSlice.js";
+import locationsReducer from "./locationSlice.js";
 
 export default combineReducers({
-  locationReducer,
+  locationsReducer,
+  productsReducer,
 });

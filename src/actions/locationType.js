@@ -1,2 +1,0 @@
-export const CHANGE_COUNT = "CHANGE_COUNT";
-export const CHANGE_LOCATION = "CHANGE_LOCATION";
