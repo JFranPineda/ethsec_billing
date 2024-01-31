@@ -1,3 +1,4 @@
+import { Card } from "@tremor/react";
 import React, { useEffect } from "react";
 import { Toaster } from "sonner";
 import { useAppSelector } from "../../hooks/appStore.js";
@@ -14,12 +15,11 @@ const ProductsPage = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Product Table</h1>
+    <Card>
       <ProductsTable products={products} />
       <CreateNewProduct />
       <Toaster richColors />
-    </div>
+    </Card>
   );
 };
 
