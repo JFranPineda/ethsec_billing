@@ -4,7 +4,7 @@ import { rollbackProduct } from "../reducers/productsSlice.js";
 export const syncProductDeleteWithDatabaseMiddleware =
   (store) => (next) => (action) => {
     const { type, meta, payload } = action;
-    console.log("action: ", action);
+    console.log("action product middleware: ", action);
     const previousState = store.getState();
     next(action);
 
@@ -35,6 +35,27 @@ export const syncProductDeleteWithDatabaseMiddleware =
       }
       if (type.endsWith("/rejected")) {
         toast.error(`Error creating product ${product.model}`);
+      }
+    }
+
+    if (type.includes("products/fetchProducts")) {
+      if (type.endsWith("/fulfilled")) {
+        toast.success(`Lista de productos obtenida correctamente`);
+      }
+      if (type.endsWith("/rejected")) {
+        toast.error(`Error getting products list`);
+      }
+    }
+
+    if (type.includes("products/updateProduct")) {
+      const updatedProduct = prm;
+      if (type.endsWith("/fulfilled")) {
+        toast.success(
+          `Producto ${updatedProduct.id} actualizado correctamente`
+        );
+      }
+      if (type.endsWith("/rejected")) {
+        toast.error(`Error updating product ${updatedProduct.model}`);
       }
     }
   };

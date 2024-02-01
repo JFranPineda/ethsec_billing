@@ -6,6 +6,7 @@ import {
   getProductById,
   updateProduct,
 } from "../actions/productsActions.js";
+import { clearProduct, selectProduct } from "../reducers/productsSlice.js";
 
 export const useProductActions = () => {
   const dispatch = useAppDispatch();
@@ -16,6 +17,14 @@ export const useProductActions = () => {
 
   const getProductWithId = (productId) => {
     dispatch(getProductById(productId));
+  };
+
+  const editProduct = (productId) => {
+    dispatch(selectProduct(productId));
+  };
+
+  const clearCurrentProduct = () => {
+    dispatch(clearProduct());
   };
 
   const addProduct = (newProduct) => {
@@ -36,5 +45,7 @@ export const useProductActions = () => {
     addProduct,
     modifyProduct,
     removeProduct,
+    editProduct,
+    clearCurrentProduct,
   };
 };

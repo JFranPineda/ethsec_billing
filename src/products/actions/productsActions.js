@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
-const API_URL = "https://light-pink-angelfish.cyclic.app/";
+import { API_URL } from "../../store/storeTypes.js";
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
@@ -43,7 +42,7 @@ export const updateProduct = createAsyncThunk(
   "products/updateProduct",
   async (updatedProduct) => {
     try {
-      const response = await axios.put(
+      const response = await axios.patch(
         API_URL + `products/${updatedProduct.id}`,
         updatedProduct
       );

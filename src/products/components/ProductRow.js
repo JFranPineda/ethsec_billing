@@ -13,7 +13,7 @@ const ProductRow = ({
   price_pen_non_igv,
   price_pen_igv,
 }) => {
-  const { removeProduct } = useProductActions();
+  const { removeProduct, editProduct } = useProductActions();
   return (
     <TableRow key={_id} id={_id}>
       <TableCell>{item}</TableCell>
@@ -25,7 +25,7 @@ const ProductRow = ({
       <TableCell>{price_pen_non_igv}</TableCell>
       <TableCell>{price_pen_igv}</TableCell>
       <TableCell>
-        <button type="button">
+        <button onClick={() => editProduct(_id)} type="button">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
