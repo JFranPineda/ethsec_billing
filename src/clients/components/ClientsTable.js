@@ -13,7 +13,6 @@ import { useAppSelector } from "../../hooks/appStore.js";
 import ClientRow from "./ClientRow.js";
 
 const ClientsTable = ({ clients = [] }) => {
-  console.log("updated clients table: ", clients);
   const loading = useAppSelector((state) => state.clientsReducer.loading);
   const error = useAppSelector((state) => state.clientsReducer.error);
 

@@ -60,10 +60,8 @@ const CreateNewClient = () => {
     };
 
     if (client?._id) {
-      console.log("modifyClient ID: ", client?._id);
       modifyClient({ ...newClient, _id: client?._id });
     } else {
-      console.log("addClient ID: ", client?._id);
       addClient(newClient);
     }
     form.reset();

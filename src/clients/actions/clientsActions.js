@@ -29,7 +29,6 @@ export const getClientById = createAsyncThunk(
 export const createClient = createAsyncThunk(
   "clients/createClient",
   async (client) => {
-    console.log("Action createClient - client: ", client);
     try {
       const response = await axios.post(API_URL + "clients", client);
       return response.data;
@@ -42,8 +41,6 @@ export const createClient = createAsyncThunk(
 export const updateClient = createAsyncThunk(
   "clients/updateClient",
   async (updatedClient) => {
-    console.log("Action updateClient - updatedClient: ", updatedClient);
-
     try {
       const response = await axios.patch(
         API_URL + `clients/${updatedClient._id}`,
