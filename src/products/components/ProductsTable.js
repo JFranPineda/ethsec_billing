@@ -15,6 +15,7 @@ import ProductRow from "./ProductRow.js";
 const ProductsTable = ({ products = [] }) => {
   const loading = useAppSelector((state) => state.productsReducer.loading);
   const error = useAppSelector((state) => state.productsReducer.error);
+
   return (
     <Card>
       <Title>
