@@ -16,13 +16,6 @@ const CreateNewProduct = () => {
     setProduct(selectedProduct);
   }, [selectedProduct, selectedProduct?._id]);
 
-  useEffect(() => {
-    if (result) {
-      setResult(null);
-      clearCurrentProduct();
-    }
-  }, [clearCurrentProduct, result]);
-
   const handleChange = (event) => {
     const field = event.target.name;
     const value = event.target.value;
