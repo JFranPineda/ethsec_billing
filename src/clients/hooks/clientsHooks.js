@@ -20,7 +20,6 @@ export const useClientActions = () => {
   };
 
   const editClient = (clientId) => {
-    console.log("editClient: ", clientId);
     dispatch(selectClient(clientId));
   };
 
@@ -29,12 +28,10 @@ export const useClientActions = () => {
   };
 
   const addClient = (newClient) => {
-    console.log("before add - clientId: ", newClient);
     dispatch(createClient(newClient));
   };
 
   const modifyClient = (updatedClient) => {
-    console.log("before update - updatedClient: ", updatedClient);
     dispatch(updateClient({ ...updatedClient }));
   };
 
