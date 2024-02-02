@@ -17,6 +17,9 @@ function App() {
             <li>
               <Link to="/clients">Clients</Link>
             </li>
+            <li>
+              <Link to="/sellers">Vendedores</Link>
+            </li>
           </ul>
         </nav>
       </div>
