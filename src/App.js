@@ -20,6 +20,9 @@ function App() {
             <li>
               <Link to="/sellers">Vendedores</Link>
             </li>
+            <li>
+              <Link to="/money_catalog">Monedas</Link>
+            </li>
           </ul>
         </nav>
       </div>

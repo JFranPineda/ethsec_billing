@@ -1,31 +1,25 @@
 import { TableCell, TableRow } from "@tremor/react";
 import React from "react";
-import { useProductActions } from "../hooks/productsHooks.js";
+import { useMoneyCatalogActions } from "../hooks/moneyCatalogHooks.js";
 
-const ProductRow = ({
+const MoneyRow = ({
   item,
   _id, //item,
-  model,
+  currency,
+  symbol,
   description,
-  quantity,
-  price_non_igv,
-  price_igv,
-  price_pen_non_igv,
-  price_pen_igv,
+  exchange_value,
 }) => {
-  const { removeProduct, editProduct } = useProductActions();
+  const { removeMoney, editMoney } = useMoneyCatalogActions();
   return (
     <TableRow key={_id} id={_id}>
       <TableCell>{item}</TableCell>
-      <TableCell>{model}</TableCell>
+      <TableCell>{currency}</TableCell>
+      <TableCell>{symbol}</TableCell>
       <TableCell>{description}</TableCell>
-      <TableCell>{quantity}</TableCell>
-      <TableCell>{price_non_igv}</TableCell>
-      <TableCell>{price_igv}</TableCell>
-      <TableCell>{price_pen_non_igv}</TableCell>
-      <TableCell>{price_pen_igv}</TableCell>
+      <TableCell>{exchange_value}</TableCell>
       <TableCell>
-        <button onClick={() => editProduct(_id)} type="button">
+        <button onClick={() => editMoney(_id)} type="button">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -41,7 +35,7 @@ const ProductRow = ({
             />
           </svg>
         </button>
-        <button onClick={() => removeProduct(_id)} type="button">
+        <button onClick={() => removeMoney(_id)} type="button">
           <svg
             aria-label="Remove element"
             xmlns="http://www.w3.org/2000/svg"
@@ -63,4 +57,4 @@ const ProductRow = ({
   );
 };
 
-export default ProductRow;
+export default MoneyRow;

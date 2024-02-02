@@ -1,7 +1,7 @@
 import { toast } from "sonner";
 import { rollbackProduct } from "../reducers/productsSlice.js";
 
-export const syncProductDeleteWithDatabaseMiddleware =
+export const syncProductWithDatabaseMiddleware =
   (store) => (next) => (action) => {
     const { type, meta, payload } = action;
     console.log("action product middleware: ", action);

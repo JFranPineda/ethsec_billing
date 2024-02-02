@@ -1,7 +1,7 @@
 import { toast } from "sonner";
 import { rollbackClient } from "../reducers/clientsSlice.js";
 
-export const syncClientDeleteWithDatabaseMiddleware =
+export const syncClientWithDatabaseMiddleware =
   (store) => (next) => (action) => {
     const { type, meta, payload } = action;
     console.log("action client middleware: ", action);

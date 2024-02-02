@@ -1,7 +1,7 @@
 import { toast } from "sonner";
 import { rollbackSeller } from "../reducers/sellersSlice.js";
 
-export const syncSellerDeleteWithDatabaseMiddleware =
+export const syncSellerWithDatabaseMiddleware =
   (store) => (next) => (action) => {
     const { type, meta, payload } = action;
     console.log("action seller middleware: ", action);
