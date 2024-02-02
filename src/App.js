@@ -9,13 +9,13 @@ function App() {
         <nav>
           <ul id="navigation">
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/">Inicio</Link>
             </li>
             <li>
-              <Link to="/products">Products</Link>
+              <Link to="/products">Productos</Link>
             </li>
             <li>
-              <Link to="/clients">Clients</Link>
+              <Link to="/clients">Clientes</Link>
             </li>
             <li>
               <Link to="/sellers">Vendedores</Link>
