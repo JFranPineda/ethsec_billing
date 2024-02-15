@@ -5,6 +5,8 @@ import {
   handleDeleteBilling,
   handleFetchBillings,
   handleUpdateBilling,
+  handleUpdateMoneyType,
+  handleUpdateWithIgv,
 } from "./billingsUtils.js";
 
 export const syncBillingWithDatabaseMiddleware =
@@ -31,6 +33,14 @@ export const syncBillingWithDatabaseMiddleware =
       "billings/updateBilling": () => {
         const updatedBilling = payload || meta?.arg;
         handleUpdateBilling({ type, updatedBilling });
+      },
+      "billings/updateWithIgv": () => {
+        const updatedBilling = payload || meta?.arg;
+        handleUpdateWithIgv({ type, updatedBilling });
+      },
+      "billings/updateMoneyType": () => {
+        const updatedBilling = payload || meta?.arg;
+        handleUpdateMoneyType({ type, updatedBilling });
       },
     };
     actionAppHandler({ actionHandlers: actionBillingsHandlers, type });

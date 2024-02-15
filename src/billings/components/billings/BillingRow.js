@@ -1,7 +1,7 @@
 import { TableCell, TableRow } from "@tremor/react";
 import React from "react";
-import { useAppNavigate } from "../../hooks/appNavigation.js";
-import { useBillingActions } from "../hooks/billingsHooks.js";
+import { useAppNavigate } from "../../../hooks/appNavigation.js";
+import { useBillingActions } from "../../hooks/billingsHooks.js";
 
 const BillingRow = ({
   billing_number,

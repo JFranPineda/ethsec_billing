@@ -9,7 +9,7 @@ import {
   Title,
 } from "@tremor/react";
 import React from "react";
-import { useAppSelector } from "../../hooks/appStore.js";
+import { useAppSelector } from "../../../hooks/appStore.js";
 import BillingRow from "./BillingRow.js";
 
 const BillingsTable = ({ billings = [] }) => {

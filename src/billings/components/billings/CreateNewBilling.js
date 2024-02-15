@@ -1,6 +1,6 @@
 import { Badge, Button, Card, TextInput, Title } from "@tremor/react";
 import { useEffect, useState } from "react";
-import { useAppSelector } from "../../hooks/appStore.js";
+import { useAppSelector } from "../../../hooks/appStore.js";
 import { useClientActions } from "../hooks/clientsHooks.js";
 
 const CreateNewBilling = () => {

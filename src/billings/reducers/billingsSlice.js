@@ -5,6 +5,8 @@ import {
   fetchBillings,
   getBillingById,
   updateBilling,
+  updateMoneyType,
+  updateWithIgv,
 } from "../actions/billingsActions.js";
 
 const initialState = {
@@ -96,6 +98,40 @@ const billingsSlice = createSlice({
         state.billings = state.billings?.filter(
           (billing) => billing._id !== billingId
         );
+      })
+      .addCase(updateMoneyType.fulfilled, (state, action) => {
+        state.loading = false;
+        const updatedBilling = action.payload
+          ? action.payload
+          : action.meta?.arg;
+        const existingBillingIndex = state.billings?.findIndex(
+          (billing) => billing._id === updatedBilling._id
+        );
+        if (existingBillingIndex !== -1) {
+          state.billings[existingBillingIndex] = updatedBilling;
+        }
+        state.selectedBilling = updatedBilling;
+      })
+      .addCase(updateMoneyType.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(updateWithIgv.fulfilled, (state, action) => {
+        state.loading = false;
+        const updatedBilling = action.payload
+          ? action.payload
+          : action.meta?.arg;
+        const existingBillingIndex = state.billings?.findIndex(
+          (billing) => billing._id === updatedBilling._id
+        );
+        if (existingBillingIndex !== -1) {
+          state.billings[existingBillingIndex] = updatedBilling;
+        }
+        state.selectedBilling = updatedBilling;
+      })
+      .addCase(updateWithIgv.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
       });
   },
 });

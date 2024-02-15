@@ -2,7 +2,7 @@ import { Card } from "@tremor/react";
 import React, { useEffect } from "react";
 import { Toaster } from "sonner";
 import { useAppSelector } from "../../hooks/appStore.js";
-import BillingsTable from "../components/BillingsTable.js";
+import BillingsTable from "../components/billings/BillingsTable.js";
 import { useBillingActions } from "../hooks/billingsHooks.js";
 
 const BillingsTablePage = () => {

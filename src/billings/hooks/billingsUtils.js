@@ -48,3 +48,25 @@ export const handleUpdateBilling = ({ type, updatedBilling }) => {
     toast.error(`Error updating billing ${updatedBilling.billing_number}`);
   }
 };
+
+export const handleUpdateWithIgv = ({ type, updatedBilling }) => {
+  if (type.endsWith("/fulfilled")) {
+    toast.success(
+      `Igv de cotización ${updatedBilling.billing_number} actualizada correctamente`
+    );
+  }
+  if (type.endsWith("/rejected")) {
+    toast.error(`Error updating igv ${updatedBilling.billing_number}`);
+  }
+};
+
+export const handleUpdateMoneyType = ({ type, updatedBilling }) => {
+  if (type.endsWith("/fulfilled")) {
+    toast.success(
+      `Moneda de cotización ${updatedBilling.billing_number} actualizada correctamente`
+    );
+  }
+  if (type.endsWith("/rejected")) {
+    toast.error(`Error updating billing ${updatedBilling.billing_number}`);
+  }
+};
