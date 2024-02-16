@@ -6,9 +6,7 @@ const IgvSwitch = () => {
   const selectedBilling = useAppSelector(
     (state) => state.billingsReducer.selectedBilling
   );
-  console.log("selectedBilling: ", selectedBilling);
   const { _id = null, with_igv = null } = selectedBilling;
-  console.log("with_igv: ", typeof with_igv);
   const { modifyWithIgv } = useBillingActions();
 
   const handleSwitchChange = () => {

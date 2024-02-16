@@ -11,7 +11,12 @@ import {
   updateMoneyType,
   updateWithIgv,
 } from "../actions/billingsActions.js";
-import { clearBilling, selectBilling } from "../reducers/billingsSlice.js";
+import {
+  clearBilling,
+  clearProduct,
+  selectBilling,
+  selectProduct,
+} from "../reducers/billingsSlice.js";
 
 export const useBillingActions = () => {
   const dispatch = useAppDispatch();
@@ -52,6 +57,14 @@ export const useBillingActions = () => {
     dispatch(updateMoneyType({ ...updatedBilling }));
   };
 
+  const selectBillingProduct = (product) => {
+    dispatch(selectProduct(product));
+  };
+
+  const clearBillingProduct = () => {
+    dispatch(clearProduct());
+  };
+
   const addBillingProduct = (updatedBilling) => {
     dispatch(addProduct({ ...updatedBilling }));
   };
@@ -74,6 +87,8 @@ export const useBillingActions = () => {
     clearCurrentBilling,
     modifyWithIgv,
     modifyMoneyType,
+    selectBillingProduct,
+    clearBillingProduct,
     addBillingProduct,
     editBillingProductQuantity,
     deleteBillingProduct,
