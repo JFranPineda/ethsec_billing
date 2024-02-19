@@ -23,7 +23,7 @@ const ProductsTable = () => {
   const money_type = selectedBilling.money_type === "PEN" ? "S/." : "$";
 
   return (
-    <Card>
+    <Card className="mt-6">
       <Title>
         Tabla de Productos
         <Badge style={{ marginLeft: "8px" }}>

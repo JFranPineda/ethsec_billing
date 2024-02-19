@@ -1,4 +1,4 @@
-import { Card, Title } from "@tremor/react";
+import { Card, Col, Grid, Title } from "@tremor/react";
 import React, { useEffect } from "react";
 import { Toaster } from "sonner";
 import { useClientActions } from "../../clients/hooks/clientsHooks.js";
@@ -52,16 +52,47 @@ const BillingDetailsPage = () => {
     <Card>
       <Title>COTIZACIÓN N° {billing_number}</Title>
       <Title>DÍAS DE VALIDEZ: {expiration_time} días</Title>
-      <ClientSelector client_id={client_id} />
-      <SellerSelector seller_id={seller_id} />
-      <MoneySelector money_type={money_type} />
-      <IgvSelector />
-      <ProductSelector products={products} indexedProducts={indexedProducts} />
-      <ProductsTable />
-      <Title>NOTAS: {notes}</Title>
-      <Title>SUBTOTAL: {before_taxes_amount}</Title>
-      <Title>IGV: {igv_amount}</Title>
-      <Title>TOTAL: {total_amount}</Title>
+      <Grid numItems={12}>
+        <Col numColSpan={1} />
+        <Col numColSpan={4} className="mt-6">
+          <ClientSelector client_id={client_id} />
+        </Col>
+        <Col numColSpan={1} />
+        <Col numColSpan={4} className="mt-6">
+          <SellerSelector seller_id={seller_id} />
+        </Col>
+      </Grid>
+      <Grid numItems={12}>
+        <Col numColSpan={1} />
+        <Col numColSpan={4} className="mt-6">
+          <MoneySelector money_type={money_type} />
+        </Col>
+        <Col numColSpan={1} />
+        <Col numColSpan={4} className="mt-6">
+          <IgvSelector />
+        </Col>
+      </Grid>
+      <Grid numItems={12}>
+        <Col numColSpan={1} />
+        <Col numColSpan={4} className="mt-6">
+          <ProductSelector
+            products={products}
+            indexedProducts={indexedProducts}
+          />
+        </Col>
+        <Col numColSpan={12} className="mt-6">
+          <ProductsTable />
+        </Col>
+      </Grid>
+      <Grid numItems={12}>
+        <Col numColSpan={6} />
+        <Col numColSpan={4} className="mt-6">
+          <Title>NOTAS: {notes}</Title>
+          <Title>SUBTOTAL: {before_taxes_amount}</Title>
+          <Title>IGV: {igv_amount}</Title>
+          <Title>TOTAL: {total_amount}</Title>
+        </Col>
+      </Grid>
       <Toaster richColors />
     </Card>
   );

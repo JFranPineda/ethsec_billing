@@ -70,3 +70,39 @@ export const handleUpdateMoneyType = ({ type, updatedBilling }) => {
     toast.error(`Error updating billing ${updatedBilling.billing_number}`);
   }
 };
+
+export const handleAddProduct = ({ type, updatedBilling }) => {
+  const { _id, product } = updatedBilling;
+  if (type.endsWith("/fulfilled")) {
+    toast.success(
+      `Producto ${product.model} agregado correctamente en cotización ${_id}`
+    );
+  }
+  if (type.endsWith("/rejected")) {
+    toast.error(`Error adding product ${product.model}`);
+  }
+};
+
+export const handleModifyProductQuantity = ({ type, updatedBilling }) => {
+  const { _id, product } = updatedBilling;
+  if (type.endsWith("/fulfilled")) {
+    toast.success(
+      `Producto ${product._id} agregado correctamente en contización ${_id}`
+    );
+  }
+  if (type.endsWith("/rejected")) {
+    toast.error(`Error modifying product ${product._id}`);
+  }
+};
+
+export const handleDeleteProduct = ({ type, updatedBilling }) => {
+  const { _id, product } = updatedBilling;
+  if (type.endsWith("/fulfilled")) {
+    toast.success(
+      `Producto ${product._id} eliminado correctamente en cotización ${_id}`
+    );
+  }
+  if (type.endsWith("/rejected")) {
+    toast.error(`Error deleting product ${product._id}`);
+  }
+};

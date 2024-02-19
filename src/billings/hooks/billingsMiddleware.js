@@ -1,9 +1,12 @@
 import { actionAppHandler } from "../../hooks/actionMiddleware.js";
 import {
   getBillingById,
+  handleAddProduct,
   handleCreateBilling,
   handleDeleteBilling,
+  handleDeleteProduct,
   handleFetchBillings,
+  handleModifyProductQuantity,
   handleUpdateBilling,
   handleUpdateMoneyType,
   handleUpdateWithIgv,
@@ -41,6 +44,18 @@ export const syncBillingWithDatabaseMiddleware =
       "billings/updateMoneyType": () => {
         const updatedBilling = payload || meta?.arg;
         handleUpdateMoneyType({ type, updatedBilling });
+      },
+      "billings/addProduct": () => {
+        const updatedBilling = meta?.arg || payload;
+        handleAddProduct({ type, updatedBilling });
+      },
+      "billings/modifyProductQuantity": () => {
+        const updatedBilling = meta?.arg || payload;
+        handleModifyProductQuantity({ type, updatedBilling });
+      },
+      "billings/deleteProduct": () => {
+        const updatedBilling = meta?.arg || payload;
+        handleDeleteProduct({ type, updatedBilling });
       },
     };
     actionAppHandler({ actionHandlers: actionBillingsHandlers, type });

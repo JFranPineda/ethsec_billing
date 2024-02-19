@@ -6,7 +6,7 @@ const ProductsList = ({ products, indexedProducts = {} }) => {
   const selectedBillingProduct = useAppSelector(
     (state) => state.billingsReducer.selectedBillingProduct
   );
-  const { _id } = selectedBillingProduct;
+  const { _id = "" } = selectedBillingProduct;
   const { selectBillingProduct } = useBillingActions();
 
   const handleSelectChange = (productId) => {
@@ -18,9 +18,9 @@ const ProductsList = ({ products, indexedProducts = {} }) => {
   return (
     <Select
       value={_id}
+      placeholder="Selecciona un producto"
       onValueChange={(productId) => handleSelectChange(productId)}
     >
-      <SelectItem value="">Selecciona un producto</SelectItem>
       {products.map((product) => (
         <SelectItem key={product._id} value={product._id}>
           {product.model}

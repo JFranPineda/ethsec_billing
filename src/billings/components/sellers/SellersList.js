@@ -23,9 +23,9 @@ const SellersList = ({ sellers = [] }) => {
   return (
     <Select
       value={seller_id}
+      placeholder="Selecciona un vendedor"
       onValueChange={(sellerId) => handleSelectChange(sellerId)}
     >
-      <SelectItem value="">Selecciona un vendedor</SelectItem>
       {sellers.map((seller) => (
         <SelectItem key={seller._id} value={seller._id}>
           {seller.first_name} {seller.last_name}

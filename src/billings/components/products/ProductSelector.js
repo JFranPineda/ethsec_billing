@@ -16,7 +16,7 @@ const ProductSelector = ({ products, indexedProducts }) => {
   const { clearBillingProduct, addBillingProduct } = useBillingActions();
 
   const handleAddProduct = () => {
-    if (selectedBilling._id && selectedBillingProduct) {
+    if (selectedBilling._id && selectedBillingProduct._id) {
       const productObj = {
         _id: selectedBilling._id,
         product: {
@@ -34,7 +34,14 @@ const ProductSelector = ({ products, indexedProducts }) => {
     <div>
       <ProductsList products={products} indexedProducts={indexedProducts} />
       {selectedBillingProduct && <ProductDetails {...selectedBillingProduct} />}
-      <Button onClick={() => handleAddProduct()}>Añadir</Button>
+      <Button
+        className="mt-2"
+        disabled={!selectedBillingProduct._id}
+        onClick={() => handleAddProduct()}
+        tooltip="Agregar producto"
+      >
+        Añadir
+      </Button>
     </div>
   );
 };

@@ -19,9 +19,9 @@ const MoniesList = ({ monies = [] }) => {
   return (
     <Select
       value={money_type}
+      placeholder="Selecciona una moneda"
       onValueChange={(moneyType) => handleSelectChange(moneyType)}
     >
-      <SelectItem value="">Selecciona una moneda</SelectItem>
       {monies.map((money) => (
         <SelectItem key={money._id} value={money.currency}>
           {money.currency}

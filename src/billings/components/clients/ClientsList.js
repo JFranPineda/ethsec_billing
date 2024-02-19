@@ -23,9 +23,9 @@ const ClientsList = ({ clients = [] }) => {
   return (
     <Select
       value={client_id}
+      placeholder="Selecciona un cliente"
       onValueChange={(clientId) => handleSelectChange(clientId)}
     >
-      <SelectItem value="">Selecciona un cliente</SelectItem>
       {clients.map((client) => (
         <SelectItem key={client._id} value={client._id}>
           {client.company_name}
