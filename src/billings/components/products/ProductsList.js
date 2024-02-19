@@ -6,7 +6,7 @@ const ProductsList = ({ products, indexedProducts = {} }) => {
   const selectedBillingProduct = useAppSelector(
     (state) => state.billingsReducer.selectedBillingProduct
   );
-  const { _id = "" } = selectedBillingProduct;
+  const { _id = null } = selectedBillingProduct;
   const { selectBillingProduct } = useBillingActions();
 
   const handleSelectChange = (productId) => {
