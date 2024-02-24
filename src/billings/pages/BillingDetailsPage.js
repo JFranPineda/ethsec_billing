@@ -1,18 +1,20 @@
-import { Card, Title } from "@tremor/react";
+import { Button, Card, Title } from "@tremor/react";
 import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { Toaster } from "sonner";
 import { useClientActions } from "../../clients/hooks/clientsHooks.js";
 import { useAppSelector } from "../../hooks/appStore.js";
 import { useMoneyCatalogActions } from "../../money_catalog/hooks/moneyCatalogHooks.js";
 import { useProductActions } from "../../products/hooks/productsHooks.js";
 import { useSellerActions } from "../../sellers/hooks/sellersHooks.js";
-import TopBillingDetails from "../components/TopBillingDetails.js";
-
 import BottomBillingDetails from "../components/BottomBillingDetails.js";
 import ProductBillingDetails from "../components/ProductBillingDetails.js";
+import TopBillingDetails from "../components/TopBillingDetails.js";
 import { useBillingActions } from "../hooks/billingsHooks.js";
 
 const BillingDetailsPage = () => {
+  const { billingId = null } = useParams();
+
   const selectedBilling = useAppSelector(
     (state) => state.billingsReducer.selectedBilling
   );
@@ -25,10 +27,19 @@ const BillingDetailsPage = () => {
   const { getAllClients } = useClientActions();
   const { getAllSellers } = useSellerActions();
   const { getAllProducts } = useProductActions();
-  const { clearBillingProduct } = useBillingActions();
+  const {
+    clearBillingProduct,
+    clearCurrentPdf,
+    generatePdf,
+    getBillingWithId,
+  } = useBillingActions();
   const { getAllMonies } = useMoneyCatalogActions();
 
   useEffect(() => {
+    if (billingId) {
+      getBillingWithId(billingId);
+    }
+    clearCurrentPdf();
     getAllClients();
     getAllSellers();
     getAllMonies();
@@ -36,9 +47,16 @@ const BillingDetailsPage = () => {
     clearBillingProduct();
   }, []);
 
+  const handleCreatePdf = () => {
+    if (selectedBilling._id) {
+      generatePdf(selectedBilling._id);
+    }
+  };
+
   return (
     <Card>
       <Title>COTIZACIÓN N° {selectedBilling?.billing_number}</Title>
+      <Button onClick={() => handleCreatePdf()}>PDF</Button>
       <TopBillingDetails {...selectedBilling} />
       <ProductBillingDetails
         products={products}

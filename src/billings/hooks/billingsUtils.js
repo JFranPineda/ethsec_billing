@@ -20,6 +20,15 @@ export const handleDeleteBilling = ({ store, type, billingToRemove }) => {
   }
 };
 
+export const handleGettingBillingById = ({ type, billingId }) => {
+  if (type.endsWith("/fulfilled")) {
+    toast.success(`Cotización ${billingId} obtenida correctamente`);
+  }
+  if (type.endsWith("/rejected")) {
+    toast.error(`Error getting billing ${billingId}`);
+  }
+};
+
 export const handleCreateBilling = ({ type, billing }) => {
   if (type.endsWith("/fulfilled")) {
     toast.success(
@@ -104,5 +113,19 @@ export const handleDeleteProduct = ({ type, updatedBilling }) => {
   }
   if (type.endsWith("/rejected")) {
     toast.error(`Error deleting product ${product._id}`);
+  }
+};
+
+export const handleGenerateBillingPdf = ({ type, pdfString }) => {
+  if (type.endsWith("/fulfilled")) {
+    toast.success(`PDF generado correctamente`);
+    const src = `data:application/pdf;base64,${pdfString}`;
+    let pdfWindow = window.open("");
+    pdfWindow.document.write(
+      `<iframe width='100%' height='100%' src=${src}></iframe>`
+    );
+  }
+  if (type.endsWith("/rejected")) {
+    toast.error(`Error generating pdf`);
   }
 };

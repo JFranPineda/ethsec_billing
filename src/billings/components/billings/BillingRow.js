@@ -17,10 +17,9 @@ const BillingRow = ({
 }) => {
   const navigate = useAppNavigate();
   const goCreateNewBilling = () => {
-    editBilling(_id);
-    navigate("/billings/create");
+    navigate(`/billings/modify/${_id}`);
   };
-  const { removeBilling, editBilling } = useBillingActions();
+  const { removeBilling } = useBillingActions();
   const productsModels = products?.map((product) => product.model).join(", ");
   return (
     <TableRow key={_id} id={_id}>

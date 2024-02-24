@@ -41,6 +41,20 @@ export const createBilling = createAsyncThunk(
   }
 );
 
+export const generateBillingPdf = createAsyncThunk(
+  "billings/generatePdf",
+  async (billingId) => {
+    try {
+      const response = await axios.get(
+        API_URL + `billings/${billingId}/generatePdf`
+      );
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+
 export const updateBilling = createAsyncThunk(
   "billings/updateBilling",
   async (updatedBilling) => {

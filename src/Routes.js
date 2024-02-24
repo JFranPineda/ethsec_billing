@@ -17,6 +17,10 @@ export const App = () => {
       <Route path="/sellers" element={<SellersPage />} />
       <Route path="/money_catalog" element={<MoniesPage />} />
       <Route path="/billings/create" element={<BillingDetailsPage />} />
+      <Route
+        path="/billings/modify/:billingId"
+        element={<BillingDetailsPage />}
+      />
       <Route path="/billings/table" element={<BillingsTablePage />} />
       <Route path="/billings" element={<BillingMenu />} />
     </Routes>

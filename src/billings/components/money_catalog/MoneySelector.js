@@ -5,7 +5,7 @@ import MoniesList from "./MoniesList.js";
 
 const MoneySelector = ({ money_type }) => {
   const monies = useAppSelector((state) => state.moniesReducer.monies);
-  const selectedMoney = monies.find((money) => money.currency == money_type);
+  const selectedMoney = monies.find((money) => money.currency === money_type);
 
   return (
     <div>

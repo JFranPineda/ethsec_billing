@@ -5,6 +5,7 @@ import {
   deleteBilling,
   deleteProduct,
   fetchBillings,
+  generateBillingPdf,
   getBillingById,
   modifyProductQuantity,
   updateBilling,
@@ -13,6 +14,7 @@ import {
 } from "../actions/billingsActions.js";
 import {
   clearBilling,
+  clearBillingPdf,
   clearProduct,
   selectBilling,
   selectProduct,
@@ -33,8 +35,8 @@ export const useBillingActions = () => {
     dispatch(selectBilling(billingId));
   };
 
-  const clearCurrentBilling = () => {
-    dispatch(clearBilling());
+  const generatePdf = (billingId) => {
+    dispatch(generateBillingPdf(billingId));
   };
 
   const addBilling = (newBilling) => {
@@ -61,10 +63,6 @@ export const useBillingActions = () => {
     dispatch(selectProduct(product));
   };
 
-  const clearBillingProduct = () => {
-    dispatch(clearProduct());
-  };
-
   const addBillingProduct = (updatedBilling) => {
     dispatch(addProduct({ ...updatedBilling }));
   };
@@ -77,20 +75,34 @@ export const useBillingActions = () => {
     dispatch(deleteProduct({ ...updatedBilling }));
   };
 
+  const clearBillingProduct = () => {
+    dispatch(clearProduct());
+  };
+
+  const clearCurrentBilling = () => {
+    dispatch(clearBilling());
+  };
+
+  const clearCurrentPdf = () => {
+    dispatch(clearBillingPdf());
+  };
+
   return {
     getAllBillings,
     getBillingWithId,
+    generatePdf,
     addBilling,
     modifyBilling,
     removeBilling,
     editBilling,
-    clearCurrentBilling,
     modifyWithIgv,
     modifyMoneyType,
     selectBillingProduct,
-    clearBillingProduct,
     addBillingProduct,
     editBillingProductQuantity,
     deleteBillingProduct,
+    clearCurrentPdf,
+    clearCurrentBilling,
+    clearBillingProduct,
   };
 };

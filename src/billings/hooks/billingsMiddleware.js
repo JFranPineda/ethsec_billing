@@ -6,6 +6,8 @@ import {
   handleDeleteBilling,
   handleDeleteProduct,
   handleFetchBillings,
+  handleGenerateBillingPdf,
+  handleGettingBillingById,
   handleModifyProductQuantity,
   handleUpdateBilling,
   handleUpdateMoneyType,
@@ -25,6 +27,10 @@ export const syncBillingWithDatabaseMiddleware =
           billingId: billingIdToRemove,
         });
         handleDeleteBilling({ store, type, billingToRemove });
+      },
+      "billings/getBillingById": () => {
+        const billingId = meta?.arg || payload;
+        handleGettingBillingById({ type, billingId });
       },
       "billings/createBilling": () => {
         const billing = payload || meta?.arg;
@@ -56,6 +62,10 @@ export const syncBillingWithDatabaseMiddleware =
       "billings/deleteProduct": () => {
         const updatedBilling = meta?.arg || payload;
         handleDeleteProduct({ type, updatedBilling });
+      },
+      "billings/generatePdf": () => {
+        const pdfString = payload?.pdf || "";
+        handleGenerateBillingPdf({ type, pdfString });
       },
     };
     actionAppHandler({ actionHandlers: actionBillingsHandlers, type });

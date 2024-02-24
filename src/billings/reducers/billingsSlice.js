@@ -5,6 +5,7 @@ import {
   deleteBilling,
   deleteProduct,
   fetchBillings,
+  generateBillingPdf,
   getBillingById,
   modifyProductQuantity,
   updateBilling,
@@ -16,6 +17,7 @@ const initialState = {
   billings: [],
   selectedBilling: {},
   selectedBillingProduct: {},
+  billingPdf: "",
   loading: false, // 'idle', 'loading', 'succeeded', 'failed'
   error: null,
 };
@@ -50,6 +52,9 @@ const billingsSlice = createSlice({
     clearProduct: (state, action) => {
       state.selectedBillingProduct = {};
     },
+    clearBillingPdf: (state, action) => {
+      state.billingPdf = "";
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -71,12 +76,18 @@ const billingsSlice = createSlice({
       .addCase(getBillingById.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        const billingId = action.payload;
-        state.billings = state.billings?.filter(
-          (billing) => billing._id === billingId
-        );
+        state.selectedBilling = action.payload;
       })
       .addCase(getBillingById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(generateBillingPdf.fulfilled, (state, action) => {
+        state.loading = false;
+        state.billingPdf = action.payload;
+        state.error = null;
+      })
+      .addCase(generateBillingPdf.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })
@@ -217,5 +228,6 @@ export const {
   clearBilling,
   selectProduct,
   clearProduct,
+  clearBillingPdf,
 } = billingsSlice.actions;
 export default billingsSlice.reducer;
