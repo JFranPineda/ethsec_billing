@@ -9,7 +9,7 @@ import { useBillingActions } from "../hooks/billingsHooks.js";
 
 const TopBillingDetails = ({
   _id,
-  expiration_time = 15,
+  expiration_time = null,
   client_id = null,
   seller_id = null,
   money_type = null,
@@ -19,7 +19,7 @@ const TopBillingDetails = ({
 
   useEffect(() => {
     setCurrentDays(expiration_time);
-  }, []);
+  }, [expiration_time]);
 
   const handleBlurDays = () => {
     if (_id) {

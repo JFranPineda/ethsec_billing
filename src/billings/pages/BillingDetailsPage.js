@@ -1,4 +1,5 @@
-import { Button, Card, Title } from "@tremor/react";
+import { PrinterIcon } from "@heroicons/react/24/outline";
+import { Card, Icon, Title } from "@tremor/react";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Toaster } from "sonner";
@@ -56,7 +57,12 @@ const BillingDetailsPage = () => {
   return (
     <Card>
       <Title>COTIZACIÓN N° {selectedBilling?.billing_number}</Title>
-      <Button onClick={() => handleCreatePdf()}>PDF</Button>
+      <Icon
+        onClick={() => handleCreatePdf()}
+        icon={PrinterIcon}
+        variant="simple"
+        tooltip="Print Billing PDF"
+      />
       <TopBillingDetails {...selectedBilling} />
       <ProductBillingDetails
         products={products}
